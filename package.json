@@ -1,0 +1,33 @@
+{
+  "name": "covid-stats-global",
+  "version": "1.0.0",
+  "description": "COVID-19 Global Statistics Web-App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jp-ong/covid-stats-global.git"
+  },
+  "author": "John Paul Ong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jp-ong/covid-stats-global/issues"
+  },
+  "homepage": "https://github.com/jp-ong/covid-stats-global#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
