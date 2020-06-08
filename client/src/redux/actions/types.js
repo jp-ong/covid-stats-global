@@ -1,0 +1,4 @@
+export const GET_LATEST_STATS = "GET_LATEST_STATS";
+export const GET_COUNTRY_STATs = "GET_COUNTRY_STATS";
+
+export const SET_LOADING = "SET_LOADING";
