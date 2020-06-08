@@ -1,5 +1,13 @@
 ::-webkit-scrollbar {
-  width: 0;
+  width: 1rem;
+  background-color: $primary;
+  border-left: solid 1px $trim;
+  &-thumb {
+    border: solid 1px $trim;
+    &:hover {
+      background-color: $trim;
+    }
+  }
 }
 
 * {
@@ -32,4 +40,9 @@ code {
 
 a {
   text-decoration: none;
+}
+
+.container {
+  width: 90%;
+  margin: 5rem auto;
 }
