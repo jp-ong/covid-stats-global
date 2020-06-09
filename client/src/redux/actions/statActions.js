@@ -5,7 +5,6 @@ import {
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
   SORT_COUNTRY_STATS,
-  CHANGE_ORDER,
 } from "./types";
 
 const setLoading = () => {
@@ -27,17 +26,13 @@ export const getCountryStats = (country) => (dispatch) => {
 };
 
 export const sortGlobalStats = (field) => (dispatch, getState) => {
-  const { latest_stats, is_ascending } = getState().stats;
-  const sorted_stats =
-    field === "country"
-      ? latest_stats.sort((a, b) => {
-          return is_ascending
-            ? a[field].localeCompare(b[field])
-            : b[field].localeCompare(a[field]);
-        })
-      : latest_stats.sort((a, b) => {
-          return is_ascending ? a[field] - b[field] : b[field] - a[field];
-        });
-  dispatch({ type: CHANGE_ORDER });
+  const { latest_stats } = getState().stats;
+
+  const sorted_stats = latest_stats.sort((a, b) => {
+    return field === "country"
+      ? a[field].localeCompare(b[field])
+      : b[field] - a[field];
+  });
+
   dispatch({ type: SORT_GLOBAL_STATS, payload: sorted_stats });
 };

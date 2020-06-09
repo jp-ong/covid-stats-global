@@ -4,4 +4,3 @@ export const SORT_GLOBAL_STATS = "SORT_GLOBAL_STATS";
 export const SORT_COUNTRY_STATS = "SORT_COUNTRY_STATS";
 
 export const SET_LOADING = "SET_LOADING";
-export const CHANGE_ORDER = "CHANGE_ORDER";
