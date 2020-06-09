@@ -4,38 +4,51 @@ import { connect } from "react-redux";
 
 import CountryRow from "./CountryRow";
 import Spinner from "../../assets/img/spinner.svg";
-import { getLatestStats } from "../../redux/actions/statActions";
+import {
+  getLatestStats,
+  sortGlobalStats,
+} from "../../redux/actions/statActions";
 
 export class CountryList extends Component {
   static propTypes = {
     stat: PropTypes.object.isRequired,
     getLatestStats: PropTypes.func.isRequired,
+    sortGlobalStats: PropTypes.func.isRequired,
   };
-
   componentDidMount() {
     this.props.getLatestStats();
   }
 
+  sortList = (field) => {
+    this.props.sortGlobalStats(field);
+  };
+
   render() {
-    const { latest_stats, loading } = this.props.stat;
+    const { latest_stats, is_ascending, loading } = this.props.stat;
     return (
       <div className="container">
         <div className="list">
           <div className="list-header">
             <div className="list-header-item">
-              <button>Country</button>
+              <button onClick={() => this.sortList("country")}>Country</button>
             </div>
             <div className="list-header-item">
-              <button>Population</button>
+              <button onClick={() => this.sortList("population")}>
+                Population
+              </button>
             </div>
             <div className="list-header-item">
-              <button>Confirmed</button>
+              <button onClick={() => this.sortList("confirmed")}>
+                Confirmed
+              </button>
             </div>
             <div className="list-header-item">
-              <button>Recovered</button>
+              <button onClick={() => this.sortList("recovered")}>
+                Recovered
+              </button>
             </div>
             <div className="list-header-item">
-              <button>Deaths</button>
+              <button onClick={() => this.sortList("deaths")}>Deaths</button>
             </div>
             <div className="list-header-item">
               <button>&nbsp;</button>
@@ -64,6 +77,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getLatestStats,
+  sortGlobalStats,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);

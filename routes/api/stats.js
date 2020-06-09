@@ -12,7 +12,9 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/latest", (req, res) => {
-  Stat.find({ date })
+  Stat.find({
+    $and: [{ date }, { population: { $ne: undefined } }],
+  })
     .sort({ country: 1 })
     .then((stats) => res.json(stats));
 });
