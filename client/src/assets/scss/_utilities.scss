@@ -45,4 +45,18 @@ a {
 .container {
   width: 90%;
   margin: 5rem auto;
+
+  &-feedback {
+    width: 100%;
+    height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 100%;
+      filter: invert(1);
+    }
+  }
 }

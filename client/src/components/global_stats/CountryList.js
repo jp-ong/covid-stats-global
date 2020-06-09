@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import CountryRow from "./CountryRow";
+import Spinner from "../../assets/img/spinner.svg";
 import { getLatestStats } from "../../redux/actions/statActions";
 
 export class CountryList extends Component {
@@ -21,15 +22,30 @@ export class CountryList extends Component {
       <div className="container">
         <div className="list">
           <div className="list-header">
-            <div className="list-headers">Country</div>
-            <div className="list-headers">Population</div>
-            <div className="list-headers">Confirmed</div>
-            <div className="list-headers">Recovered</div>
-            <div className="list-headers">Deaths</div>
+            <div className="list-header-item">
+              <button>Country</button>
+            </div>
+            <div className="list-header-item">
+              <button>Population</button>
+            </div>
+            <div className="list-header-item">
+              <button>Confirmed</button>
+            </div>
+            <div className="list-header-item">
+              <button>Recovered</button>
+            </div>
+            <div className="list-header-item">
+              <button>Deaths</button>
+            </div>
+            <div className="list-header-item">
+              <button>&nbsp;</button>
+            </div>
           </div>
           <div className="list-body">
             {loading ? (
-              <div className="container-feedback">Fetching Data</div>
+              <div className="container-feedback">
+                Fetching Data <img src={Spinner} alt="Loading" />
+              </div>
             ) : (
               latest_stats.map((stats) => (
                 <CountryRow key={stats.country} stats={stats} />
