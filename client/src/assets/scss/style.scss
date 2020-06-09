@@ -11,8 +11,6 @@
   align-items: center;
   justify-content: space-between;
 
-  z-index: 2;
-
   div {
     margin: 0 2rem;
   }
@@ -78,7 +76,11 @@
         font-weight: bold;
 
         transition: 200ms;
+
         &:hover {
+          background-color: $trim;
+        }
+        &:focus {
           background-color: $trim;
         }
       }
@@ -118,6 +120,10 @@
         align-items: center;
         justify-content: flex-end;
 
+        &-label {
+          display: none;
+        }
+
         &:nth-of-type(1) {
           width: 200%;
 
@@ -142,3 +148,5 @@
     }
   }
 }
+
+@import "media";

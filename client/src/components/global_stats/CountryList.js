@@ -24,7 +24,7 @@ export class CountryList extends Component {
   };
 
   render() {
-    const { latest_stats, is_ascending, loading } = this.props.stat;
+    const { latest_stats, loading } = this.props.stat;
     return (
       <div className="container">
         <div className="list">

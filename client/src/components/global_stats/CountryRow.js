@@ -7,11 +7,21 @@ const CountryRow = ({ stats }) => {
     <div className="list-body-row">
       <div className="list-body-row-item">{country}</div>
       <div className="list-body-row-item">
+        <div className="list-body-row-item-label">Population</div>
         {parseInt(population).toLocaleString()}
       </div>
-      <div className="list-body-row-item">{confirmed.toLocaleString()}</div>
-      <div className="list-body-row-item">{recovered.toLocaleString()}</div>
-      <div className="list-body-row-item">{deaths.toLocaleString()}</div>
+      <div className="list-body-row-item">
+        <div className="list-body-row-item-label">Confirmed</div>
+        {confirmed.toLocaleString()}
+      </div>
+      <div className="list-body-row-item">
+        <div className="list-body-row-item-label">Recovered</div>
+        {recovered.toLocaleString()}
+      </div>
+      <div className="list-body-row-item">
+        <div className="list-body-row-item-label">Deaths</div>
+        {deaths.toLocaleString()}
+      </div>
       <div className="list-body-row-item">
         <Link to={`/country/${country}`}>&raquo;</Link>
       </div>
