@@ -5,7 +5,9 @@ const CountryRow = ({ stats }) => {
   const { country, population, confirmed, recovered, deaths } = stats;
   return (
     <div className="list-body-row">
-      <div className="list-body-row-item">{country}</div>
+      <div className="list-body-row-item">
+        <span>{country}</span>
+      </div>
       <div className="list-body-row-item">
         <div className="list-body-row-item-label">Population</div>
         {parseInt(population).toLocaleString()}
