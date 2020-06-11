@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layouts/Navbar";
 import CountryList from "./components/global_stats/CountryList";
 import TableList from "./components/country_stats/TableList";
 
