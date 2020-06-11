@@ -11,12 +11,20 @@
   align-items: center;
   justify-content: space-between;
 
+  cursor: default;
+
   div {
     margin: 0 2rem;
   }
 
-  &-brand {
+  &-brand > a {
+    color: $secondary;
     font-family: $mono;
+    transition: 500ms;
+
+    &:hover {
+      color: $light;
+    }
 
     span {
       margin-right: 0.25rem;
@@ -176,25 +184,23 @@
       align-items: center;
       justify-content: center;
 
-      button {
+      div {
         width: 100%;
         padding: 0.5rem 0 0.25rem;
 
         background-color: $trim;
         color: $secondary;
         border: solid 1px $primary;
-        outline: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         font-weight: bold;
-        cursor: pointer;
-
+        font-size: 0.75rem;
         transition: 200ms;
 
         &:hover {
-          background-color: $primary;
-          border: solid 1px $trim;
-        }
-        &:focus {
           background-color: $primary;
           border: solid 1px $trim;
         }
@@ -203,8 +209,13 @@
   }
 
   &-body {
+    width: calc(100% + 1rem);
+    max-height: 25rem;
     display: flex;
     flex-flow: column nowrap;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
 
     &-row {
       padding: 0.75rem 0 0.25rem;
@@ -217,7 +228,6 @@
 
       &:hover {
         background-color: $trim;
-        padding: 1rem 0 0.5rem;
         font-weight: bold;
       }
 

@@ -1,4 +1,8 @@
 @media (max-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
   .container {
     width: 95%;
     margin: 2.5rem auto;
@@ -15,7 +19,7 @@
       margin: 0;
     }
 
-    &-brand {
+    &-brand > a {
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
@@ -124,10 +128,13 @@
   .table {
     &-header {
       &-item {
-        button {
+        div {
           font-size: 2vw;
         }
       }
+    }
+    &-body {
+      width: 100%;
     }
   }
 }

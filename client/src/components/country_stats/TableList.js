@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import TableRow from "./TableRow";
 import Spinner from "../../assets/img/spinner.svg";
@@ -19,21 +20,37 @@ export class TableList extends Component {
 
   render() {
     const { country_stats, loading } = this.props.stat;
+    const { country, population } =
+      country_stats["0"] === undefined
+        ? { country: "", population: "" }
+        : country_stats["0"];
     return (
       <div className="container">
+        <div className="container-header">
+          <div className="container-header-item">
+            <div className="container-header-item-label">Country</div>
+            <div className="container-header-item-data">{country}</div>
+          </div>
+          <div className="container-header-item">
+            <div className="container-header-item-label">Population</div>
+            <div className="container-header-item-data">
+              {population.toLocaleString()}
+            </div>
+          </div>
+        </div>
         <div className="table">
           <div className="table-header">
             <div className="table-header-item">
-              <button>Date</button>
+              <div>Date</div>
             </div>
             <div className="table-header-item">
-              <button>Confirmed</button>
+              <div>Confirmed</div>
             </div>
             <div className="table-header-item">
-              <button>Recovered</button>
+              <div>Recovered</div>
             </div>
             <div className="table-header-item">
-              <button>Deaths</button>
+              <div>Deaths</div>
             </div>
           </div>
           <div className="table-body">
@@ -47,6 +64,9 @@ export class TableList extends Component {
               ))
             )}
           </div>
+        </div>
+        <div className="container-footer">
+          <Link to="/">Go Back</Link>
         </div>
       </div>
     );

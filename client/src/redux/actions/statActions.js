@@ -4,7 +4,6 @@ import {
   GET_LATEST_STATS,
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
-  SORT_COUNTRY_STATS,
 } from "./types";
 
 const setLoading = () => {

@@ -3,7 +3,6 @@ import {
   GET_LATEST_STATS,
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
-  SORT_COUNTRY_STATS,
 } from "../actions/types";
 
 const initialState = {
@@ -22,8 +21,6 @@ export default (state = initialState, action) => {
       return { ...state, country_stats: action.payload, loading: false };
     case SORT_GLOBAL_STATS:
       return { ...state, latest_stats: action.payload };
-    case SORT_COUNTRY_STATS:
-      return { ...state, country_stats: action.payload };
     default:
       return state;
   }

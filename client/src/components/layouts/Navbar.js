@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Clock from "./Clock";
 
 const Navbar = () => {
   return (
     <div className="nav">
       <div className="nav-brand">
-        <span>COVID-19</span>Global
+        <Link to="/">
+          <span>COVID-19</span>Global
+        </Link>
       </div>
       <div className="nav-info">
         <div className="nav-info-author">
