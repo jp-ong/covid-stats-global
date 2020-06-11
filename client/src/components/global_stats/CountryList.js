@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 import CountryRow from "./CountryRow";
 import Spinner from "../../assets/img/spinner.svg";
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import {
   getLatestStats,
   sortGlobalStats,

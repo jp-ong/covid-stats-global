@@ -164,4 +164,74 @@
   }
 }
 
+.table {
+  &-header {
+    display: flex;
+    align-items: center;
+
+    &-item {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        width: 100%;
+        padding: 0.5rem 0 0.25rem;
+
+        background-color: $trim;
+        color: $secondary;
+        border: solid 1px $primary;
+        outline: none;
+
+        font-weight: bold;
+        cursor: pointer;
+
+        transition: 200ms;
+
+        &:hover {
+          background-color: $primary;
+          border: solid 1px $trim;
+        }
+        &:focus {
+          background-color: $primary;
+          border: solid 1px $trim;
+        }
+      }
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-flow: column nowrap;
+
+    &-row {
+      padding: 0.75rem 0 0.25rem;
+      border-bottom: solid 1px $trim;
+
+      display: flex;
+      align-items: center;
+
+      transition: 200ms;
+
+      &:hover {
+        background-color: $trim;
+        padding: 1rem 0 0.5rem;
+        font-weight: bold;
+      }
+
+      &-item {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: $mono;
+      }
+    }
+  }
+}
+
 @import "media";

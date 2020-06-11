@@ -120,4 +120,14 @@
       }
     }
   }
+
+  .table {
+    &-header {
+      &-item {
+        button {
+          font-size: 2vw;
+        }
+      }
+    }
+  }
 }
