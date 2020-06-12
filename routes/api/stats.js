@@ -3,20 +3,21 @@ const router = express.Router();
 
 const Stat = require("../../models/Stat");
 
-const date = new Date(
-  new Date(new Date().setDate(new Date().getDate() - 1)).setUTCHours(0, 0, 0, 0)
-);
-
 router.get("/all", (req, res) => {
   Stat.find().then((stats) => res.json(stats));
 });
 
-router.get("/latest", (req, res) => {
-  Stat.find({
-    $and: [{ date }, { population: { $ne: undefined } }],
-  })
+router.get("/latest/:days", (req, res) => {
+  const date = new Date(
+    new Date(
+      new Date().setDate(new Date().getDate() - req.params.days)
+    ).setUTCHours(0, 0, 0, 0)
+  );
+  Stat.find({ date })
     .sort({ country: 1 })
-    .then((stats) => res.json(stats));
+    .then((stats) => {
+      res.json(stats);
+    });
 });
 
 router.get("/country/:country", (req, res) => {
