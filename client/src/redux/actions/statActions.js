@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   SET_LOADING,
+  SET_LATEST_DATE,
   GET_LATEST_STATS,
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
@@ -10,11 +11,17 @@ const setLoading = () => {
   return { type: SET_LOADING };
 };
 
-export const getLatestStats = () => (dispatch) => {
+export const setLatestDay = (value) => (dispatch, getState) => {
+  const { latest_date } = getState().stats;
+  dispatch({ type: SET_LATEST_DATE, payload: latest_date + value });
+};
+
+export const getLatestStats = () => (dispatch, getState) => {
   dispatch(setLoading());
-  axios
-    .get("/api/stats/latest")
-    .then((res) => dispatch({ type: GET_LATEST_STATS, payload: res.data }));
+  const { latest_date } = getState().stats;
+  axios.get(`/api/stats/latest/${latest_date}`).then((res) => {
+    dispatch({ type: GET_LATEST_STATS, payload: res.data });
+  });
 };
 
 export const getCountryStats = (country) => (dispatch) => {

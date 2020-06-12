@@ -130,4 +130,57 @@ a {
       }
     }
   }
+
+  &-controls {
+    margin-bottom: 0.75rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-data {
+      height: 2.5rem;
+      font-size: 2rem;
+      font-family: $serif;
+      font-weight: bold;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      height: 2.5rem;
+      width: 7rem;
+      margin: 0 1rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: $trim;
+      border: solid 1px $trim;
+      background-color: $primary;
+      border-radius: 0.25rem;
+
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: 200ms;
+
+      &:hover {
+        background-color: $trim;
+        color: $secondary;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+    .disabled {
+      pointer-events: none;
+      opacity: 0.25;
+    }
+  }
 }

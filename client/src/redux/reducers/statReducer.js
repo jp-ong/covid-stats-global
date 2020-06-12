@@ -1,5 +1,6 @@
 import {
   SET_LOADING,
+  SET_LATEST_DATE,
   GET_LATEST_STATS,
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
@@ -9,12 +10,15 @@ const initialState = {
   latest_stats: [],
   country_stats: [],
   loading: false,
+  latest_date: 1,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_LOADING:
       return { ...state, loading: true };
+    case SET_LATEST_DATE:
+      return { ...state, latest_date: action.payload };
     case GET_LATEST_STATS:
       return { ...state, latest_stats: action.payload, loading: false };
     case GET_COUNTRY_STATS:
