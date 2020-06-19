@@ -4,6 +4,7 @@ import {
   GET_LATEST_STATS,
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
+  CALC_STATS_DIFF,
 } from "../actions/types";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   country_stats: [],
   loading: false,
   latest_date: 1,
+  stats_diff: {},
 };
 
 export default (state = initialState, action) => {
@@ -25,6 +27,8 @@ export default (state = initialState, action) => {
       return { ...state, country_stats: action.payload, loading: false };
     case SORT_GLOBAL_STATS:
       return { ...state, latest_stats: action.payload };
+    case CALC_STATS_DIFF:
+      return { ...state, stats_diff: action.payload };
     default:
       return state;
   }

@@ -19,11 +19,15 @@ export class TableList extends Component {
   }
 
   render() {
-    const { country_stats, loading } = this.props.stat;
+    const { country_stats, loading, stats_diff } = this.props.stat;
     const { country, population } =
       country_stats["0"] === undefined
         ? { country: "", population: "" }
         : country_stats["0"];
+    const { newConfirmed, newRecovered, newDeaths } =
+      stats_diff === undefined
+        ? { newConfirmed: "", newRecovered: "", newDeaths: "" }
+        : stats_diff;
     return (
       <div className="container">
         <div className="container-header">
@@ -36,6 +40,18 @@ export class TableList extends Component {
             <div className="container-header-item-data">
               {population.toLocaleString()}
             </div>
+          </div>
+          <div className="container-header-item">
+            <div className="container-header-item-label">+Confirmed</div>
+            <div className="container-header-item-data">{newConfirmed}</div>
+          </div>
+          <div className="container-header-item">
+            <div className="container-header-item-label">+Recovered</div>
+            <div className="container-header-item-data">{newRecovered}</div>
+          </div>
+          <div className="container-header-item">
+            <div className="container-header-item-label">+Deaths</div>
+            <div className="container-header-item-data">{newDeaths}</div>
           </div>
         </div>
         <div className="table">

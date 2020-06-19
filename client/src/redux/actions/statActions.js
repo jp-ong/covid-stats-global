@@ -5,6 +5,7 @@ import {
   GET_LATEST_STATS,
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
+  CALC_STATS_DIFF,
 } from "./types";
 
 const setLoading = () => {
@@ -26,9 +27,10 @@ export const getLatestStats = () => (dispatch, getState) => {
 
 export const getCountryStats = (country) => (dispatch) => {
   dispatch(setLoading());
-  axios
-    .get(`/api/stats/country/${country}`)
-    .then((res) => dispatch({ type: GET_COUNTRY_STATS, payload: res.data }));
+  axios.get(`/api/stats/country/${country}`).then((res) => {
+    dispatch({ type: GET_COUNTRY_STATS, payload: res.data });
+    dispatch(calcDiff(res.data));
+  });
 };
 
 export const sortGlobalStats = (field) => (dispatch, getState) => {
@@ -41,4 +43,16 @@ export const sortGlobalStats = (field) => (dispatch, getState) => {
   });
 
   dispatch({ type: SORT_GLOBAL_STATS, payload: sorted_stats });
+};
+
+const calcDiff = (data) => {
+  const country_stats = data;
+  const a = country_stats[0];
+  const b = country_stats[1];
+  const payload = {
+    newConfirmed: a.confirmed - b.confirmed,
+    newRecovered: a.recovered - b.recovered,
+    newDeaths: a.deaths - b.deaths,
+  };
+  return { type: CALC_STATS_DIFF, payload };
 };
