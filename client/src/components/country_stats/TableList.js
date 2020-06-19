@@ -40,15 +40,21 @@ export class TableList extends Component {
           </div>
           <div className="container-header-item">
             <div className="container-header-item-label">+&nbsp;Confirmed</div>
-            <div className="container-header-item-data">{new_confirmed}</div>
+            <div className="container-header-item-data">
+              {new_confirmed.toLocaleString()}
+            </div>
           </div>
           <div className="container-header-item">
             <div className="container-header-item-label">+&nbsp;Recovered</div>
-            <div className="container-header-item-data">{new_recovered}</div>
+            <div className="container-header-item-data">
+              {new_recovered.toLocaleString()}
+            </div>
           </div>
           <div className="container-header-item">
             <div className="container-header-item-label">+&nbsp;Deaths</div>
-            <div className="container-header-item-data">{new_deaths}</div>
+            <div className="container-header-item-data">
+              {new_deaths.toLocaleString()}
+            </div>
           </div>
         </div>
         <div className="table">
