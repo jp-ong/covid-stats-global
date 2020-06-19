@@ -47,6 +47,11 @@
           grid-column: 5/7;
         }
       }
+      &#total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
   }
 

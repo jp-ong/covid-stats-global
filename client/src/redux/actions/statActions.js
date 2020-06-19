@@ -6,6 +6,7 @@ import {
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
   CALC_STATS_DIFF,
+  CALC_STATS_TOTAL,
 } from "./types";
 
 const setLoading = () => {
@@ -17,12 +18,41 @@ export const setLatestDay = (value) => (dispatch, getState) => {
   dispatch({ type: SET_LATEST_DATE, payload: latest_date + value });
 };
 
+const calcTotal = (data) => {
+  const latest_stats = data;
+  const payload = {
+    total_confirmed: latest_stats.reduce((total, data) => {
+      return total + data["confirmed"];
+    }, 0),
+    total_recovered: latest_stats.reduce((total, { recovered }) => {
+      return total + recovered;
+    }, 0),
+    total_deaths: latest_stats.reduce((total, { deaths }) => {
+      return total + deaths;
+    }, 0),
+  };
+  return { type: CALC_STATS_TOTAL, payload };
+};
+
 export const getLatestStats = () => (dispatch, getState) => {
   dispatch(setLoading());
   const { latest_date } = getState().stats;
   axios.get(`/api/stats/latest/${latest_date}`).then((res) => {
     dispatch({ type: GET_LATEST_STATS, payload: res.data });
+    dispatch(calcTotal(res.data));
   });
+};
+
+const calcDiff = (data) => {
+  const country_stats = data;
+  const a = country_stats[0];
+  const b = country_stats[1];
+  const payload = {
+    new_confirmed: a.confirmed - b.confirmed,
+    new_recovered: a.recovered - b.recovered,
+    new_deaths: a.deaths - b.deaths,
+  };
+  return { type: CALC_STATS_DIFF, payload };
 };
 
 export const getCountryStats = (country) => (dispatch) => {
@@ -43,16 +73,4 @@ export const sortGlobalStats = (field) => (dispatch, getState) => {
   });
 
   dispatch({ type: SORT_GLOBAL_STATS, payload: sorted_stats });
-};
-
-const calcDiff = (data) => {
-  const country_stats = data;
-  const a = country_stats[0];
-  const b = country_stats[1];
-  const payload = {
-    newConfirmed: a.confirmed - b.confirmed,
-    newRecovered: a.recovered - b.recovered,
-    newDeaths: a.deaths - b.deaths,
-  };
-  return { type: CALC_STATS_DIFF, payload };
 };

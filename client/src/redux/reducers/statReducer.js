@@ -5,6 +5,7 @@ import {
   GET_COUNTRY_STATS,
   SORT_GLOBAL_STATS,
   CALC_STATS_DIFF,
+  CALC_STATS_TOTAL,
 } from "../actions/types";
 
 const initialState = {
@@ -12,7 +13,16 @@ const initialState = {
   country_stats: [],
   loading: false,
   latest_date: 1,
-  stats_diff: {},
+  stats_diff: {
+    new_confirmed: "",
+    new_recovered: "",
+    new_deaths: "",
+  },
+  stats_total: {
+    total_confirmed: "",
+    total_recovered: "",
+    total_deaths: "",
+  },
 };
 
 export default (state = initialState, action) => {
@@ -29,6 +39,8 @@ export default (state = initialState, action) => {
       return { ...state, latest_stats: action.payload };
     case CALC_STATS_DIFF:
       return { ...state, stats_diff: action.payload };
+    case CALC_STATS_TOTAL:
+      return { ...state, stats_total: action.payload };
     default:
       return state;
   }

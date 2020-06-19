@@ -33,7 +33,8 @@ export class CountryList extends Component {
   };
 
   render() {
-    const { latest_stats, loading, latest_date } = this.props.stat;
+    const { latest_stats, loading, latest_date, stats_total } = this.props.stat;
+    const { total_confirmed, total_recovered, total_deaths } = stats_total;
     const currentDate = (days) =>
       new Date(
         new Date(new Date().setDate(new Date().getDate() - days)).setUTCHours(
@@ -63,6 +64,26 @@ export class CountryList extends Component {
           >
             +
           </button>
+        </div>
+        <div className="container-header" id="total">
+          <div className="container-header-item">
+            <div className="container-header-item-label">Confirmed</div>
+            <div className="container-header-item-data">
+              {total_confirmed.toLocaleString()}
+            </div>
+          </div>
+          <div className="container-header-item">
+            <div className="container-header-item-label">Recovered</div>
+            <div className="container-header-item-data">
+              {total_recovered.toLocaleString()}
+            </div>
+          </div>
+          <div className="container-header-item">
+            <div className="container-header-item-label">Deaths</div>
+            <div className="container-header-item-data">
+              {total_deaths.toLocaleString()}
+            </div>
+          </div>
         </div>
         <div className="list">
           <div className="list-header">

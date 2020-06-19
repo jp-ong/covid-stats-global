@@ -24,10 +24,7 @@ export class TableList extends Component {
       country_stats["0"] === undefined
         ? { country: "", population: "" }
         : country_stats["0"];
-    const { newConfirmed, newRecovered, newDeaths } =
-      stats_diff === undefined
-        ? { newConfirmed: "", newRecovered: "", newDeaths: "" }
-        : stats_diff;
+    const { new_confirmed, new_recovered, new_deaths } = stats_diff;
     return (
       <div className="container">
         <div className="container-header">
@@ -43,15 +40,15 @@ export class TableList extends Component {
           </div>
           <div className="container-header-item">
             <div className="container-header-item-label">+&nbsp;Confirmed</div>
-            <div className="container-header-item-data">{newConfirmed}</div>
+            <div className="container-header-item-data">{new_confirmed}</div>
           </div>
           <div className="container-header-item">
             <div className="container-header-item-label">+&nbsp;Recovered</div>
-            <div className="container-header-item-data">{newRecovered}</div>
+            <div className="container-header-item-data">{new_recovered}</div>
           </div>
           <div className="container-header-item">
             <div className="container-header-item-label">+&nbsp;Deaths</div>
-            <div className="container-header-item-data">{newDeaths}</div>
+            <div className="container-header-item-data">{new_deaths}</div>
           </div>
         </div>
         <div className="table">
