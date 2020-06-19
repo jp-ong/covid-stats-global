@@ -57,7 +57,7 @@ export class CountryList extends Component {
             {currentDate(latest_date).toLocaleDateString("en-CA")}
           </div>
           <button
-            className={loading ? "disabled" : ""}
+            className={loading || latest_date === 1 ? "disabled" : ""}
             onClick={() => {
               if (latest_date > 1) this.changeLatestDay(-1);
             }}
