@@ -5,7 +5,7 @@
 
   .container {
     width: 95%;
-    margin: 2.5rem auto;
+    margin: 1rem auto;
 
     &-controls {
       justify-content: space-between;
@@ -25,8 +25,11 @@
       display: grid;
       grid-template-columns: repeat(6, 10%);
       column-gap: 5%;
-      row-gap: 1rem;
+      row-gap: 0.5rem;
       &-item {
+        &-label {
+          font-size: 0.75rem;
+        }
         margin: 0;
         &:nth-of-type(1) {
           grid-column: 1/4;
