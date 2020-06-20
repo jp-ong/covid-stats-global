@@ -78,8 +78,12 @@ export class TableList extends Component {
                 Fetching Data <img src={Spinner} alt="Loading" />
               </div>
             ) : (
-              country_stats.map((stats) => (
-                <TableRow key={stats._id} stats={stats} />
+              country_stats.map((stats, index) => (
+                <TableRow
+                  key={stats._id}
+                  stats={stats}
+                  prev={country_stats[index + 1]}
+                />
               ))
             )}
           </div>

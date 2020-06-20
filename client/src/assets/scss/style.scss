@@ -227,6 +227,7 @@
       transition: 200ms;
 
       &:hover {
+        padding: 0.75rem 0 1.25rem;
         background-color: $trim;
         font-weight: bold;
       }
@@ -239,6 +240,20 @@
         justify-content: center;
 
         font-family: $mono;
+        position: relative;
+
+        &-info {
+          position: absolute;
+          top: 0;
+          opacity: 0;
+          transition: 800ms;
+          font-weight: lighter;
+        }
+      }
+
+      &:hover &-item-info {
+        top: 1rem;
+        opacity: 0.875;
       }
     }
   }
