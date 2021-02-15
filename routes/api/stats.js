@@ -13,7 +13,7 @@ router.get("/latest/:days", (req, res) => {
       new Date().setDate(new Date().getDate() - req.params.days)
     ).setUTCHours(0, 0, 0, 0)
   );
-  Stat.find({ $and: [{ date }, { population: { $ne: undefined } }] })
+  Stat.find({ $and: [{ date }, { country_codes: { $ne: [] } }] })
     .sort({ country: 1 })
     .then((stats) => {
       res.json(stats);
