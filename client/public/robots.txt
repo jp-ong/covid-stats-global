@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: http://covid-stats-global.herokuapp.com/sitemap.xml
+Sitemap: https://covid-stats-global.herokuapp.com/sitemap.xml
